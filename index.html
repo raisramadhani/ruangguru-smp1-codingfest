@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutorial App Inventor</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+
+    <style>
+        /* Styling Dasar Web */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #f6f8fa;
+        }
+
+        /* Styling Menu Navigasi */
+        .nav-bar {
+            background-color: #24292f;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #f6f8fa;
+            color: #24292f;
+            border: 1px solid rgba(27, 31, 36, 0.15);
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .nav-bar button:hover {
+            background-color: #e2e6ea;
+        }
+
+        .nav-bar button.active {
+            background-color: #0969da;
+            color: #ffffff;
+            cursor: default;
+        }
+
+        /* Styling Wadah Konten Markdown */
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 45px;
+            background-color: #ffffff !important;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            /* Memaksa warna teks menjadi gelap agar tidak tembus saat Dark Mode */
+            color: #24292f !important;
+        }
+
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3,
+        .markdown-body p,
+        .markdown-body li {
+            color: #24292f !important;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+                margin: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-bar" id="navBar"></div>
+
+    <div class="markdown-body" id="content"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        // Data masing-masing kelompok
+        const kelompokData = [
+            { id: 1, file: 'smp1-kel1.md', label: 'Tutorial Kelompok 1' },
+            { id: 2, file: 'smp1-kel2.md', label: 'Tutorial Kelompok 2' },
+            { id: 3, file: 'smp1-kel3.md', label: 'Tutorial Kelompok 3' },
+            { id: 4, file: 'smp1-kel4.md', label: 'Tutorial Kelompok 4' }
+        ];
+
+        // Fungsi untuk merender tombol di Navigasi
+        function renderNav(activeId) {
+            const navBar = document.getElementById('navBar');
+            navBar.innerHTML = ''; // Bersihkan isi navigasi
+
+            if (activeId === 'home') {
+                // Tampilkan semua tombol saat di Home
+                kelompokData.forEach(item => {
+                    const btn = document.createElement('button');
+                    btn.textContent = item.label;
+                    btn.onclick = () => loadMarkdown(item.file, item.id);
+                    navBar.appendChild(btn);
+                });
+                document.getElementById('content').innerHTML = '<h2 style="text-align: center;">Silakan pilih tutorial di atas untuk memulai.</h2>';
+            } else {
+                // Tampilkan tombol Home dan tombol Kelompok yang aktif saja
+                const btnHome = document.createElement('button');
+                btnHome.textContent = 'Home';
+                btnHome.onclick = () => renderNav('home');
+                navBar.appendChild(btnHome);
+
+                const activeItem = kelompokData.find(item => item.id === activeId);
+                if (activeItem) {
+                    const btnActive = document.createElement('button');
+                    btnActive.textContent = activeItem.label;
+                    btnActive.className = 'active'; // Memberi warna biru sebagai penanda sedang dibaca
+                    navBar.appendChild(btnActive);
+                }
+            }
+        }
+
+        // Fungsi untuk memuat dan merender file MD
+        function loadMarkdown(filename, id) {
+            document.getElementById('content').innerHTML = `<h2 style="text-align: center; color: #57606a;">Memuat ${filename}...</h2>`;
+
+            fetch(filename)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('File tidak ditemukan');
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    document.getElementById('content').innerHTML = marked.parse(text);
+                    window.scrollTo(0, 0); // Kembali ke atas
+                    renderNav(id); // Ubah navigasi agar hanya muncul Home & Tutorial Aktif
+                })
+                .catch(error => {
+                    document.getElementById('content').innerHTML = `
+            <h2 style="color: #cf222e;">Error: Gagal memuat ${filename}</h2>
+            <p>Pastikan file <b>${filename}</b> sudah di-commit di GitHub.</p>
+          `;
+                    console.error(error);
+                });
+        }
+
+        // Jalankan halaman Home pertama kali dibuka
+        renderNav('home');
+    </script>
+</body>
+
+</html>
