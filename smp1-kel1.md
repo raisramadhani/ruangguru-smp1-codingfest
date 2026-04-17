@@ -54,41 +54,54 @@ _(Catatan: Pastikan penulisan nama Screen persis seperti di atas tanpa spasi)._
 
 ## TAHAP 2: Desain & Blocks - HalamanUtama
 
-Pastikan di bagian atas layar App Inventor, Anda sedang berada di Screen **HalamanUtama**. Di sini kita membuat area untuk input data tabungan agar bisa masuk ke Leaderboard peringkat kelas atau teman.
+Pastikan di bagian atas layar App Inventor, Anda sedang berada di Screen **HalamanUtama**. Di sini kita membuat Header dengan Logo sebagai identitas aplikasi, dilanjutkan dengan area untuk input data tabungan agar bisa masuk ke Leaderboard peringkat kelas.
 
 ### A. Desain (Designer)
 
-1. **Membuat Judul:** Dari panel **Palette** > **User Interface**, tarik komponen **Label** ke layar bagian paling atas.
+1. **Membuat Header & Logo (Bisa di-copy jika ada Screen baru nanti):**
+   - Dari panel **Palette** > **Layout**, tarik **HorizontalArrangement** ke layar bagian paling atas.
+   - Di panel **Properties**, ubah **Width** menjadi `Fill parent`.
+   - Dari panel **Palette** > **User Interface**, tarik komponen **Image** ke dalam kotak HorizontalArrangement tadi.
+   - Di panel **Components**, klik tombol **Rename Component** pada gambar tersebut, ubah namanya menjadi: `Logo_Aplikasi`.
+   - Di panel **Properties**, cari kotak centang bernama **Clickable** dan **wajib dicentang** (agar logo bisa ditekan untuk me-refresh/kembali ke halaman utama).
+   - Tarik komponen **Label** letakkan di sebelah logo jika ingin memberi teks judul aplikasi SMP 1.
+2. **Membuat Judul Leaderboard:** Dari panel **Palette** > **User Interface**, tarik komponen **Label** ke layar tepat di bawah header.
    - Di panel **Properties**, ubah **Text** menjadi: `Leaderboard Penabung Terbanyak!`.
    - Jangan lupa centang kotak **FontBold** agar hurufnya tebal.
-2. **Input Nama:** Tarik komponen **TextBox** ke bawah judul.
+3. **Input Nama:** Tarik komponen **TextBox** ke bawah judul.
    - Di panel **Properties**, ubah **Hint** menjadi: `Nama Penabung`.
    - Di panel **Components**, klik **Rename Component** dan ubah namanya menjadi: `Input_Nama`.
-3. **Input Nominal:** Tarik komponen **TextBox** kedua ke bawahnya.
+4. **Input Nominal:** Tarik komponen **TextBox** kedua ke bawahnya.
    - Di panel **Properties**, ubah **Hint** menjadi: `Nominal Menabung`.
    - Centang kotak **NumbersOnly** (agar keyboard angka yang muncul saat aplikasi dijalankan).
    - Klik **Rename Component**, ubah menjadi: `Input_Nominal`.
-4. **Tombol Tambah:** Dari panel **Palette**, tarik komponen **Button** ke layar.
+5. **Tombol Tambah:** Dari panel **Palette**, tarik komponen **Button** ke layar.
    - Di panel **Properties**, ubah **Text** menjadi: `Tambah ke Leaderboard`.
    - Klik **Rename Component**, ubah menjadi: `Tombol_Tambah`.
-5. **Daftar Leaderboard:** Dari **Palette** > **User Interface**, tarik komponen **ListView** ke bawah layar.
+6. **Daftar Leaderboard:** Dari **Palette** > **User Interface**, tarik komponen **ListView** ke bawah layar.
    - Di panel **Properties**, ubah **Height** dan **Width** menjadi `Fill parent` agar daftarnya memenuhi ruang kosong di bawah.
    - Klik **Rename Component**, ubah menjadi: `Daftar_Leaderboard`.
-6. **Alat Tambahan:**
+7. **Alat Tambahan:**
    - Dari kategori **Storage**, tarik komponen **TinyDB** ke layar (komponen ini akan sembunyi di bawah). Rename menjadi: `DB_Kel1`.
    - Dari kategori **User Interface**, tarik komponen **Notifier**. Rename menjadi: `Notifikasi`.
 
 ### B. Kode (Blocks)
 
-Pindah ke tampilan **Blocks**. Kita butuh bantuan variabel list agar daftar peringkat bisa terus bertambah tanpa menimpa data yang lama.
+Pindah ke tampilan **Blocks**. Kita akan menyusun logika logo dan variabel list agar daftar peringkat bisa terus bertambah tanpa menimpa data yang lama.
 
-**Bagian 1: Menyiapkan Variabel**
+**Bagian 1: Logika Logo (Refresh Halaman Utama)**
+
+1. Di panel kiri, temukan dan klik `Logo_Aplikasi`. Tarik blok kuning teratas: `when Logo_Aplikasi.Click do`.
+2. Klik kategori **Control** (warna oranye), tarik blok `open another screen screenName`.
+3. Klik kategori **Text** (warna pink), tarik blok teks kosong `" "` paling atas. Pasangkan ke blok control tadi, lalu ketik di dalamnya: `HalamanUtama`.
+
+**Bagian 2: Menyiapkan Variabel**
 
 1. Di panel kiri, klik kategori **Variables** (warna oranye tua), tarik blok `initialize global name to`.
 2. Ganti tulisan `name` menjadi `DataPeringkat`.
 3. Pasangkan dengan blok biru muda `create empty list` dari kategori **Lists**.
 
-**Bagian 2: Menampilkan Data Saat Layar Dibuka**
+**Bagian 3: Menampilkan Data Saat Layar Dibuka**
 
 1. Di panel kiri, klik `HalamanUtama` (ikon HP/Screen paling atas). Tarik blok kuning: `when HalamanUtama.Initialize do`.
 2. Klik kategori **Variables**, tarik blok `set to` dan pilih `global DataPeringkat`. Masukkan ke dalam blok kuning.
@@ -97,7 +110,7 @@ Pindah ke tampilan **Blocks**. Kita butuh bantuan variabel list agar daftar peri
    - Isi `valueIfTagNotThere` dengan blok biru muda `create empty list`.
 4. Klik `Daftar_Leaderboard`, tarik blok hijau muda `set Daftar_Leaderboard.Elements to` dan taruh di bawah blok variabel tadi. Pasangkan dengan blok merah `get` (dari Variables) dan pilih `global DataPeringkat`.
 
-**Bagian 3: Menyimpan Data Baru ke Leaderboard**
+**Bagian 4: Menyimpan Data Baru ke Leaderboard**
 
 1. Di panel kiri, klik `Tombol_Tambah`, tarik blok kuning `when Tombol_Tambah.Click do`.
 2. **Ambil Data Lama:** Tarik blok `set to` pilih `global DataPeringkat`. Pasangkan dengan blok ungu `call DB_Kel1.GetValue`. Isi `tag`-nya dengan teks pink `"PapanSkor"`, dan `valueIfTagNotThere` dengan `create empty list`.
@@ -113,4 +126,4 @@ Pindah ke tampilan **Blocks**. Kita butuh bantuan variabel list agar daftar peri
 5. **Update Tampilan Layar:** Klik `Daftar_Leaderboard`, tarik blok hijau muda `set Daftar_Leaderboard.Elements to`. Pasangkan dengan blok merah `get global DataPeringkat`.
 6. **Munculkan Pesan:** Klik `Notifikasi`, tarik blok ungu `call Notifikasi.ShowAlert notice`. Isi `notice` dengan teks pink `" "` dan ketik: `Data berhasil masuk ke Leaderboard!`.
 
-> **PENTING:** Silakan coba Run program dari awal sampai akhir, periksa apakah nama dan nominal yang Anda ketik berhasil masuk dan muncul di daftar Leaderboard secara berurutan. Jangan lupa Save project Anda!
+> **PENTING:** Silakan coba Run program dari awal sampai akhir, periksa apakah tombol logo bisa diklik, dan apakah nama serta nominal yang Anda ketik berhasil masuk ke daftar Leaderboard secara berurutan. Jangan lupa Save project Anda!

@@ -56,29 +56,40 @@ _(Catatan: Pastikan penulisan nama Screen persis seperti di atas tanpa spasi)._
 
 ## TAHAP 2: Desain & Blocks - HalamanUtama
 
-Pastikan di bagian atas layar App Inventor, Anda sedang berada di Screen **HalamanUtama**. Di sini kita akan membuat daftar menu untuk mengarahkan pengguna.
+Pastikan di bagian atas layar App Inventor, Anda sedang berada di Screen **HalamanUtama**. Di sini kita membuat Header dengan Logo terlebih dahulu, dilanjutkan daftar menu navigasi.
 
 ### A. Desain (Designer)
 
-1. **Membuat Judul:** Dari panel **Palette** > **User Interface**, tarik komponen **Label** ke layar bagian atas.
+1. **Membuat Header & Logo (Bisa di-copy ke layar lain nanti):**
+   - Dari panel **Palette** > **Layout**, tarik **HorizontalArrangement** ke layar bagian paling atas.
+   - Di panel **Properties**, ubah **Width** menjadi `Fill parent`.
+   - Dari panel **Palette** > **User Interface**, tarik komponen **Image** ke dalam kotak HorizontalArrangement tadi.
+   - Di panel **Components**, klik tombol **Rename Component** pada gambar tersebut, ubah namanya menjadi: `Logo_Aplikasi`.
+   - Di panel **Properties**, cari kotak centang bernama **Clickable** dan **wajib dicentang** (agar logo bisa ditekan untuk me-refresh/kembali ke halaman utama).
+   - Tarik komponen **Label** letakkan di sebelah logo jika ingin memberi teks judul aplikasi SMP 1.
+2. **Membuat Judul:** Dari panel **Palette** > **User Interface**, tarik komponen **Label** ke layar di bawah header.
    - Di panel **Properties**, ubah **Text** menjadi: `Daftar Menu Aplikasi Menabung`.
    - Centang kotak **FontBold** agar hurufnya tebal.
-2. **Menu Input Uang:** Tarik komponen **Button** ke bawah judul.
+3. **Menu Input Uang:** Tarik komponen **Button** ke bawah judul.
    - Di panel **Properties**, ubah **Text** menjadi: `Catat Pemasukan / Pengeluaran`.
    - Klik **Rename Component**, ubah menjadi: `Menu_Input`.
-3. **Menu Progress:** Tarik komponen **Button** kedua ke bawah tombol pertama.
+4. **Menu Progress:** Tarik komponen **Button** kedua ke bawah tombol pertama.
    - Di panel **Properties**, ubah **Text** menjadi: `Cek Progress Tabungan`.
    - Klik **Rename Component**, ubah menjadi: `Menu_Progress`.
 
 ### B. Kode (Blocks)
 
-Pindah ke tampilan **Blocks**. Kita akan membuat sistem navigasi perpindahan layar.
+Pindah ke tampilan **Blocks**. Kita akan membuat logika logo dan sistem navigasi perpindahan layar.
 
-1. **Logika Tombol Input:**
+1. **Logika Logo (Refresh Halaman Utama):**
+   - Di panel kiri, temukan dan klik `Logo_Aplikasi`. Tarik blok kuning teratas: `when Logo_Aplikasi.Click do`.
+   - Klik kategori **Control** (warna oranye), tarik blok `open another screen screenName`.
+   - Klik kategori **Text** (warna pink), tarik blok teks kosong `" "` paling atas. Pasangkan ke blok control tadi, lalu ketik di dalamnya: `HalamanUtama`.
+2. **Logika Tombol Input:**
    - Di panel kiri, klik `Menu_Input`. Tarik blok kuning `when Menu_Input.Click do`.
-   - Dari kategori **Control** (warna oranye), tarik blok `open another screen screenName`. Pasangkan ke dalam blok kuning.
+   - Dari kategori **Control**, tarik blok `open another screen screenName`. Pasangkan ke dalam blok kuning.
    - Isi `screenName` dengan teks pink `" "` dan ketik: `InputUang`.
-2. **Logika Tombol Progress:**
+3. **Logika Tombol Progress:**
    - Lakukan hal yang sama: klik `Menu_Progress`, tarik blok kuning `when Menu_Progress.Click do`.
    - Tarik blok `open another screen screenName`, isi dengan teks pink `" "` dan ketik: `ProgressTabungan`.
 
@@ -90,17 +101,22 @@ Ganti screen aktif ke **InputUang** melalui dropdown Screen di atas. Di sini pen
 
 ### A. Desain (Designer)
 
-1. **Input Nominal:** Dari panel **Palette** > **User Interface**, tarik komponen **TextBox** ke layar.
+1. **Paste Header Utama:**
+   - Ganti screen kembali ke `HalamanUtama` sebentar.
+   - Klik komponen `HorizontalArrangement` (Header) yang berisi Logo Anda.
+   - Tekan tombol **Ctrl + C** (Copy) di keyboard.
+   - Ganti screen kembali ke `InputUang`. Tekan tombol **Ctrl + V** (Paste). Header dan Logo otomatis terpasang rapi di bagian atas layar.
+2. **Input Nominal:** Dari panel **Palette** > **User Interface**, tarik komponen **TextBox** ke layar di bawah header.
    - Di panel **Properties**, ubah **Hint** menjadi: `Nominal Uang (Contoh: 10000)`.
    - Centang kotak **NumbersOnly** (agar keyboard yang muncul hanya angka).
    - Klik **Rename Component**, ubah menjadi: `Input_Nominal`.
-2. **Tombol Pemasukan:** Tarik komponen **Button** ke layar.
+3. **Tombol Pemasukan:** Tarik komponen **Button** ke layar.
    - Di panel **Properties**, ubah **Text** menjadi: `Simpan Sebagai Pemasukan`.
    - Klik **Rename Component**, ubah menjadi: `Tombol_Masuk`.
-3. **Tombol Pengeluaran:** Tarik komponen **Button** ke layar.
+4. **Tombol Pengeluaran:** Tarik komponen **Button** ke layar.
    - Di panel **Properties**, ubah **Text** menjadi: `Simpan Sebagai Pengeluaran`.
    - Klik **Rename Component**, ubah menjadi: `Tombol_Keluar`.
-4. **Alat Tambahan:**
+5. **Alat Tambahan:**
    - Dari kategori **Storage**, tarik komponen **TinyDB** (Rename menjadi: `DB_Kel4`).
    - Dari kategori **User Interface**, tarik komponen **Notifier** (Rename menjadi: `Pesan`).
 
@@ -129,14 +145,16 @@ Ganti screen aktif ke **ProgressTabungan**. Di sini kita akan membuat target dan
 
 ### A. Desain (Designer)
 
-1. **Input Target:** Tarik **TextBox** ke layar. Ubah **Hint** menjadi: `Tentukan Target Tabunganmu`. Centang **NumbersOnly**. Rename menjadi: `Input_Target`.
-2. **Tombol Set Target:** Tarik **Button** ke bawahnya. Ubah **Text** menjadi: `Set Target`. Rename menjadi: `Tombol_SetTarget`.
-3. **Info Saldo:** Tarik **Label** ke layar. Ubah **Text** menjadi: `Saldo Saat Ini: Rp 0`. Centang **FontBold**. Rename menjadi: `Teks_Saldo`.
-4. **Info Progress (Status):** Tarik **Label** ke bawah saldo.
+1. **Paste Header Utama:**
+   - Tekan tombol **Ctrl + V** (Paste) di keyboard Anda agar Header dan Logo kembali terpasang rapi di bagian paling atas layar.
+2. **Input Target:** Tarik **TextBox** ke bawah header. Ubah **Hint** menjadi: `Tentukan Target Tabunganmu`. Centang **NumbersOnly**. Rename menjadi: `Input_Target`.
+3. **Tombol Set Target:** Tarik **Button** ke bawahnya. Ubah **Text** menjadi: `Set Target`. Rename menjadi: `Tombol_SetTarget`.
+4. **Info Saldo:** Tarik **Label** ke layar. Ubah **Text** menjadi: `Saldo Saat Ini: Rp 0`. Centang **FontBold**. Rename menjadi: `Teks_Saldo`.
+5. **Info Progress (Status):** Tarik **Label** ke bawah saldo.
    - Ubah **Text** menjadi: `Kekurangan: Rp 0`.
    - Di panel **Properties**, ubah **TextColor** menjadi `Red` (Merah).
    - Rename menjadi: `Teks_Status`.
-5. **Database:** Tarik **TinyDB** dari Storage (Rename: `DB_Kel4`).
+6. **Database:** Tarik **TinyDB** dari Storage (Rename: `DB_Kel4`).
 
 ### B. Kode (Blocks)
 
@@ -148,7 +166,7 @@ Pindah ke **Blocks**. Kita butuh sedikit matematika di sini.
    - _(Opsional: Panggil fungsi Initialize yang akan kita buat di bawah ini agar layarnya langsung update saat tombol diklik)._
 2. **Menghitung Progress dan Saldo (Saat Layar Dibuka):**
    - Tarik blok kuning `when ProgressTabungan.Initialize do`.
-   - Kita akan membuat dua variabel lokal untuk mempermudah. Dari kategori **Variables**, tarik blok `initialize local name to in do`.
+   - Kita akan membuat dua variabel lokal untuk mempermudah. Dari kategori **Variables**, tarik blok `initialize local name to in do` (blok oranye tua yang agak panjang dengan celah "do").
    - Klik tulisan `name` pertama dan ganti menjadi `Saldo`. Pasangkan dengan blok Math kurang `-` (Isi kiri dengan `GetValue` tag `"TotalMasuk"`, isi kanan dengan `GetValue` tag `"TotalKeluar"`).
    - Klik ikon gir biru pada blok variabel lokal tersebut, lalu tarik blok `name` baru ke bawah agar ada dua variabel. Ganti nama kedua menjadi `Target`. Pasangkan dengan `GetValue` tag `"TargetUang"` (default `0`).
 3. **Memperbarui Teks di Layar (Di dalam celah "do" blok lokal):**

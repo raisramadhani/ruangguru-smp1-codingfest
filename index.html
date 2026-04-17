@@ -98,7 +98,8 @@
             { id: 1, file: 'smp1-kel1.md', label: 'Tutorial Kelompok 1' },
             { id: 2, file: 'smp1-kel2.md', label: 'Tutorial Kelompok 2' },
             { id: 3, file: 'smp1-kel3.md', label: 'Tutorial Kelompok 3' },
-            { id: 4, file: 'smp1-kel4.md', label: 'Tutorial Kelompok 4' }
+            { id: 4, file: 'smp1-kel4.md', label: 'Tutorial Kelompok 4' },
+            { id: 5, file: 'cf.md', label: 'Cara Pengumpulan CodingFest' }
         ];
 
         // Fungsi untuk merender tombol di Navigasi
@@ -116,7 +117,7 @@
                 });
                 document.getElementById('content').innerHTML = '<h2 style="text-align: center;">Silakan pilih tutorial di atas untuk memulai.</h2>';
             } else {
-                // Tampilkan tombol Home dan tombol Kelompok yang aktif saja
+                // Tampilkan tombol Home, tombol Kelompok yang aktif, dan tombol CodingFest
                 const btnHome = document.createElement('button');
                 btnHome.textContent = 'Home';
                 btnHome.onclick = () => renderNav('home');
@@ -128,6 +129,14 @@
                     btnActive.textContent = activeItem.label;
                     btnActive.className = 'active'; // Memberi warna biru sebagai penanda sedang dibaca
                     navBar.appendChild(btnActive);
+                }
+
+                const codingFestItem = kelompokData.find(item => item.id === 5);
+                if (codingFestItem && activeId !== 5) {
+                    const btnCodingFest = document.createElement('button');
+                    btnCodingFest.textContent = codingFestItem.label;
+                    btnCodingFest.onclick = () => loadMarkdown(codingFestItem.file, codingFestItem.id);
+                    navBar.appendChild(btnCodingFest);
                 }
             }
         }
