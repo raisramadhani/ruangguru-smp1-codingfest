@@ -138,6 +138,10 @@
                     btnCodingFest.onclick = () => loadMarkdown(codingFestItem.file, codingFestItem.id);
                     navBar.appendChild(btnCodingFest);
                 }
+                const btnPitchDeck = document.createElement('button');
+                btnPitchDeck.textContent = 'Contoh Pitch Deck/PPT';
+                btnPitchDeck.onclick = () => window.open('https://canva.link/no7cab9bjfycl1j', '_blank');
+                navBar.appendChild(btnPitchDeck);
             }
         }
 

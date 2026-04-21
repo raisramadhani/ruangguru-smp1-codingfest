@@ -1,3 +1,5 @@
 # Tutorial Mengumpulkan Project Coding Fest
 
 <a href="https://drive.google.com/file/d/1G621nK3idn8T6nXsmRAYc7xrYar6hcke/view?usp=drive_link" target="_blank" style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 12px;">Buka Guide</a>
+<a href="https://docs.google.com/presentation/d/1fq4Y_wUFctFsCtQbWqHlVkqMG28jr1D0/edit?usp=sharing&ouid=114931242218283411698&rtpof=true&sd=true" target="_blank" style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 12px;">Download Contoh PPT/Pitch Deck</a>
+<a href="https://canva.link/no7cab9bjfycl1j" target="_blank" style="background-color: #f44336; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 12px;">Lihat Contoh PPT/Pitch Deck</a>
