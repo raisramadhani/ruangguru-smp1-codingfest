@@ -202,7 +202,11 @@
                     return response.text();
                 })
                 .then(text => {
-                    document.getElementById('content').innerHTML = marked.parse(text);
+                    if (filename === 'cf.md') {
+                        document.getElementById('content').innerHTML = text;
+                    } else {
+                        document.getElementById('content').innerHTML = marked.parse(text);
+                    }
                     window.scrollTo(0, 0); // Kembali ke atas
                     renderNav(id); // Ubah navigasi agar hanya muncul Home & Tutorial Aktif
                 })
