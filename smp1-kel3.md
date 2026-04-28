@@ -1,6 +1,6 @@
 # Tutorial Membuat Aplikasi KELOMPOK 3 (SMP 1 Surakarta)
 
-Pastikan Anda sudah login ke MIT App Inventor, membuat project baru, dan berada di tampilan **Designer** (tombol di pojok kanan atas).
+Pastikan Anda sudah login ke MIT App Inventor, membuat project baru, dan berada di tampilan **Designer** (perhatikan tombol **Designer** di pojok kanan atas layar harus aktif/menyala).
 
 ---
 
@@ -10,32 +10,39 @@ Kita akan membuat halaman Login terlebih dahulu di **Screen1** (Screen bawaan sa
 
 ### A. Desain (Designer)
 
-1. **Input Username:** Dari panel **Palette** > **User Interface**, tarik komponen **TextBox** ke layar.
-   - Di panel **Properties** (sebelah kanan), ubah **Hint** menjadi: `Masukkan Username`.
-   - Di panel **Components**, klik **Rename Component** dan ubah namanya menjadi: `InputUsername`.
-2. **Input Password:** Dari panel **Palette** > **User Interface**, tarik komponen **PasswordTextBox** ke layar.
-   - Di panel **Properties**, ubah **Hint** menjadi: `Masukkan Password`.
-   - Klik **Rename Component**, ubah menjadi: `InputPassword`.
-3. **Tombol Login:** Dari **Palette**, tarik komponen **Button** ke layar.
-   - Di panel **Properties**, ubah **Text** menjadi: `Masuk / Login`.
-   - Klik **Rename Component**, ubah menjadi: `Tombol_Masuk`.
-4. **Pesan Notifikasi:** Dari panel **Palette**, tarik komponen **Notifier** ke layar (komponen ini akan muncul di bawah layar). Biarkan namanya tetap `Notifier1`.
+1. **Input Username:** Di sebelah kiri layar pada panel **Palette** > klik kategori **User Interface**, klik dan tarik (drag) komponen **TextBox** ke gambar HP di tengah layar (Viewer).
+   - Beralih ke panel **Properties** di sebelah kanan layar. Cari kolom **Hint**, hapus isinya dan ketik: `Masukkan Username`.
+   - Beralih ke panel **Components** (di sebelah kanan gambar HP). Klik komponen `TextBox1`, lalu klik tombol **Rename** di bawahnya. Ubah namanya menjadi: `InputUsername` lalu klik OK.
+2. **Input Password:** Dari panel **Palette** > kategori **User Interface**, tarik komponen **PasswordTextBox** ke gambar HP di bawah Username.
+   - Di panel **Properties**, cari kolom **Hint** dan ubah menjadi: `Masukkan Password`.
+   - Di panel **Components**, klik komponennya lalu klik **Rename**, ubah menjadi: `InputPassword`.
+3. **Tombol Login:** Dari panel **Palette** > kategori **User Interface**, tarik komponen **Button** ke gambar HP.
+   - Di panel **Properties**, cari kolom **Text** dan ubah tulisannya menjadi: `Masuk / Login`.
+   - Di panel **Components**, klik **Rename**, ubah menjadi: `Tombol_Masuk`.
+4. **Pesan Notifikasi:** Dari panel **Palette** > kategori **User Interface**, tarik komponen **Notifier** ke gambar HP. (Catatan: Komponen ini tidak akan terlihat di layar HP, melainkan muncul di bawah sebagai _Non-visible components_). Biarkan namanya tetap `Notifier1` di panel Components.
 
 ### B. Kode (Blocks)
 
-Pindah ke tampilan **Blocks** (pojok kanan atas).
+Pindah ke tampilan **Blocks** dengan mengklik tombol **Blocks** di pojok kanan atas layar.
 
-1. Di panel kiri, klik `Tombol_Masuk`, tarik blok kuning paling atas: `when Tombol_Masuk.Click do`.
-2. Dari kategori **Control** (warna oranye), tarik blok `if then else` ke dalam blok kuning.
+1. **Memulai Tombol:** Di panel sebelah kiri bawah (daftar komponen), cari dan klik `Tombol_Masuk`. Akan muncul laci blok, tarik blok kuning paling atas: `when Tombol_Masuk.Click do` ke area putih.
+2. **Membuat Syarat:** Di panel kiri atas (Built-in), klik kategori **Control** (warna oranye), tarik blok `if then else` ke dalam celah blok kuning tadi.
 3. **Mengatur Syarat Login (Bagian if):**
-   - Dari kategori **Logic** (hijau terang), tarik blok `and` pasangkan ke sebelah `if`.
-   - Di lubang kiri `and`: Tarik blok sama dengan `=` dari kategori **Logic**. Sisi kirinya isi dengan blok hijau tua `InputUsername.Text`, sisi kanannya isi dengan teks pink `" "` dan ketik `123`.
-   - Di lubang kanan `and`: Tarik blok `=` lagi. Sisi kirinya isi dengan blok hijau tua `InputPassword.Text`, sisi kanannya isi dengan teks pink `" "` dan ketik `123`.
+   - Di panel kiri atas, klik kategori **Logic** (hijau terang), tarik blok `and` pasangkan ke sebelah kanan tulisan `if`.
+   - **Di lubang kiri `and`:** Klik kategori **Logic** lagi, tarik blok sama dengan `=`.
+     - **Sisi kirinya:** Klik komponen `InputUsername` di panel kiri bawah, scroll dan tarik blok hijau tua `InputUsername.Text`, ke sisi kiri blok `=`.
+     - **Sisi kanannya:** Klik kategori **Text** (pink), tarik blok kosong `" "` paling atas. Pasangkan ke sisi kanan `=`, lalu klik tengahnya dan ketik `123`.
+   - **Di lubang kanan `and`:** Lakukan hal yang sama. Tarik blok `=` dari **Logic**.
+     - **Sisi kirinya:** Klik komponen `InputPassword` di panel kiri bawah, cari dan tarik blok hijau tua `InputPassword.Text`.
+     - **Sisi kanannya:** Ambil blok teks pink kosong `" "` dari **Text**, pasangkan lalu ketik `123`.
 4. **Jika Login Benar (Bagian then):**
-   - Klik `Notifier1`, tarik blok ungu `call Notifier1.ShowAlert notice`. Pasangkan ke dalam `then`. Isi dengan teks pink `" "` dan ketik: `Selamat datang kembali!`.
-   - Dari kategori **Control**, tarik blok `open another screen screenName`. Isi dengan teks pink `" "` dan ketik: `BuatKarakter`.
+   - Di panel kiri bawah, klik komponen `Notifier1`, cari dan tarik blok ungu `call Notifier1.ShowAlert notice`. Pasangkan ke dalam celah `then`.
+   - Klik kategori **Text**, ambil blok kosong `" "`, pasangkan ke sebelah `notice`, dan ketik: `Selamat datang kembali!`.
+   - Di panel kiri atas, klik kategori **Control**, scroll agak ke bawah dan tarik blok `open another screen screenName` ke bawah blok ungu tadi.
+   - Ambil lagi blok teks pink kosong `" "` dari **Text**, pasangkan, dan ketik persis: `BuatKarakter`.
 5. **Jika Login Salah (Bagian else):**
-   - Tarik lagi blok ungu `call Notifier1.ShowAlert notice` ke dalam `else`. Isi dengan teks pink `" "` dan ketik: `Password Salah kak`.
+   - Lakukan cara yang sama: klik `Notifier1` di panel kiri bawah, tarik blok ungu `call Notifier1.ShowAlert notice` ke dalam celah `else`.
+   - Ambil blok teks pink `" "` dari **Text** dan ketik: `Password Salah kak`.
 
 ---
 
@@ -43,8 +50,8 @@ Pindah ke tampilan **Blocks** (pojok kanan atas).
 
 Karena aplikasi kelompok Anda sangat lengkap, kita perlu membuat 7 Screen baru.
 
-1. Di bagian atas layar, klik tombol **Add Screen**.
-2. Ketik nama screen satu per satu (ulangi langkah 1 untuk setiap screen):
+1. Di bagian paling atas layar App Inventor, klik tombol **Add Screen**.
+2. Ketik nama screen satu per satu pada pop-up yang muncul, lalu klik OK (ulangi langkah 1 untuk setiap screen):
    - `BuatKarakter`
    - `HalamanUtama`
    - `CatatUang`
@@ -53,175 +60,189 @@ Karena aplikasi kelompok Anda sangat lengkap, kita perlu membuat 7 Screen baru.
    - `Teman`
    - `BebasPet`
 
-_(Catatan: Pastikan penulisan nama Screen persis seperti di atas tanpa spasi)._
+_(Catatan: Pastikan penulisan nama Screen persis seperti di atas, huruf besar kecil sama, dan TANPA SPASI)._
 
 ---
 
 ## TAHAP 2: Desain & Blocks - BuatKarakter
 
-Ganti screen aktif ke **BuatKarakter** melalui menu dropdown di atas. Di sini pengguna akan memulai perjalanannya.
+Ganti screen aktif ke **BuatKarakter** melalui kotak dropdown Screen di atas. Pastikan kembali ke mode **Designer**. Di sini pengguna akan memulai perjalanannya.
 
 ### A. Desain (Designer)
 
-1. **Gambar Peliharaan:** Dari panel **Palette** > **User Interface**, tarik komponen **Image** ke layar. Upload gambar peliharaan awal Anda (telur atau bayi hewan) di bagian **Picture** pada panel Properties.
-2. **Input Nama:** Tarik **TextBox** ke bawah gambar. Ubah **Hint** menjadi: `Beri nama peliharaanmu!`. Rename menjadi: `Input_NamaPet`.
-3. **Input Target:** Tarik **TextBox** kedua. Centang kotak **NumbersOnly**. Ubah **Hint** menjadi: `Berapa target tabunganmu?`. Rename menjadi: `Input_TargetUang`.
-4. **Tombol Mulai:** Tarik **Button** ke bawahnya. Ubah **Text** menjadi: `Mulai Menabung!`. Rename menjadi: `Tombol_Mulai`.
-5. **Database:** Tarik **TinyDB** dari kategori Storage. Rename menjadi: `DB_Kel3`.
+1. **Gambar Peliharaan:** Dari panel **Palette** > kategori **User Interface**, tarik komponen **Image** ke layar HP.
+   - Di panel bawah bagian **Media**, klik tombol **Upload File...** lalu pilih gambar peliharaan awal Anda (telur/bayi hewan) dari komputer.
+   - Beralih ke panel **Properties**, cari menu **Picture**, klik dan pilih nama file gambar yang baru saja di-upload, lalu klik OK.
+2. **Input Nama:** Dari panel **Palette**, tarik **TextBox** ke bawah gambar.
+   - Di panel **Properties**, ubah **Hint** menjadi: `Beri nama peliharaanmu!`.
+   - Di panel **Components**, Rename menjadi: `Input_NamaPet`.
+3. **Input Target:** Tarik **TextBox** kedua ke layar.
+   - Di panel **Properties**, centang kotak **NumbersOnly**. Ubah **Hint** menjadi: `Berapa target tabunganmu?`.
+   - Di panel **Components**, Rename menjadi: `Input_TargetUang`.
+4. **Tombol Mulai:** Tarik **Button** ke bawahnya.
+   - Di panel **Properties**, ubah **Text** menjadi: `Mulai Menabung!`.
+   - Di panel **Components**, Rename menjadi: `Tombol_Mulai`.
+5. **Database:** Dari panel **Palette** > klik kategori **Storage**, tarik **TinyDB** ke layar. Di panel **Components**, Rename menjadi: `DB_Kel3`.
 
 ### B. Kode (Blocks)
 
 Pindah ke tampilan **Blocks**.
 
-1. Tarik blok kuning `when Tombol_Mulai.Click do`.
-2. Klik `DB_Kel3`, tarik blok ungu `call DB_Kel3.StoreValue`.
-   - Isi `tag` dengan teks pink `"NamaPet"`. Isi `valueToStore` dengan blok hijau tua `Input_NamaPet.Text`.
-3. Tarik lagi blok ungu `call DB_Kel3.StoreValue` dan letakkan di bawahnya.
-   - Isi `tag` dengan teks pink `"Target"`. Isi `valueToStore` dengan blok hijau tua `Input_TargetUang.Text`.
-4. Dari kategori **Control**, tarik blok `open another screen screenName`. Isi dengan teks pink `"HalamanUtama"`.
+1. Di panel kiri bawah, klik `Tombol_Mulai`, tarik blok kuning `when Tombol_Mulai.Click do`.
+2. Klik komponen `DB_Kel3`, tarik blok ungu `call DB_Kel3.StoreValue`. Pasangkan ke blok kuning.
+   - Isi lubang `tag` dengan blok teks pink kosong `" "` dari kategori **Text** dan ketik: `"NamaPet"`.
+   - Isi `valueToStore` dengan mengklik `Input_NamaPet` di panel kiri lalu tarik blok hijau tua `Input_NamaPet.Text`.
+3. Klik lagi `DB_Kel3`, tarik blok ungu `call DB_Kel3.StoreValue` dan letakkan tepat di bawah blok ungu pertama.
+   - Isi `tag` dengan blok teks pink `" "` dan ketik: `"Target"`.
+   - Isi `valueToStore` dengan mengklik `Input_TargetUang`, lalu tarik blok hijau tua `Input_TargetUang.Text`.
+4. Dari kategori **Control**, scroll ke bawah, tarik blok `open another screen screenName`. Ambil blok teks pink `" "` dari kategori **Text** dan ketik: `HalamanUtama`.
 
 ---
 
 ## TAHAP 3: Desain & Blocks - HalamanUtama
 
-Ganti screen ke **HalamanUtama**. Di sini kita membuat Header dengan Logo terlebih dahulu, lalu peliharaan akan selalu mengingatkan kita untuk menabung.
+Ganti screen ke **HalamanUtama** via dropdown atas. Kembali ke mode **Designer**.
 
 ### A. Desain (Designer)
 
 1. **Membuat Header & Logo (Bisa di-copy ke layar lain nanti):**
-   - Dari panel **Palette** > **Layout**, tarik **HorizontalArrangement** ke layar bagian paling atas.
+   - Dari panel **Palette** > klik kategori **Layout**, tarik **HorizontalArrangement** ke layar bagian paling atas.
    - Di panel **Properties**, ubah **Width** menjadi `Fill parent`.
    - Dari panel **Palette** > **User Interface**, tarik komponen **Image** ke dalam kotak HorizontalArrangement tadi.
-   - Di panel **Components**, klik tombol **Rename Component** pada gambar tersebut, ubah namanya menjadi: `Logo_Aplikasi`.
-   - Di panel **Properties**, cari kotak centang bernama **Clickable** dan **wajib dicentang** (agar logo bisa ditekan untuk me-refresh/kembali ke halaman utama).
-   - Tarik komponen **Label** letakkan di sebelah logo jika ingin memberi teks judul aplikasi SMP 1.
-2. **Info Karakter:** Tarik **Label** ke bawah header. Ubah Text menjadi: `Nama Peliharaan`. Centang FontBold. Rename: `Teks_NamaPet`.
-3. **Gambar Karakter:** Tarik **Image**. Upload gambar karakter peliharaan Anda. Rename: `Gambar_Pet`.
-4. **Menu Tombol:** Tarik 4 buah **Button** ke layar secara berurutan.
-   - Button 1 -> Text: `Catat Uang`, Rename: `Menu_CatatUang`.
-   - Button 2 -> Text: `Cek Saldo`, Rename: `Menu_Saldo`.
-   - Button 3 -> Text: `Toko Aksesoris`, Rename: `Menu_Toko`.
-   - Button 4 -> Text: `Mutual Friends`, Rename: `Menu_Teman`.
-5. **Alat Tambahan:**
-   - Tarik **TinyDB** (Rename: `DB_Kel3`).
-   - Tarik **Notifier** (Rename: `Notifikasi`).
-   - Dari kategori **Sensors**, tarik **Clock**. Di Properties, pastikan **TimerEnabled** dicentang dan ubah **TimerInterval** menjadi `30000` (artinya pengingat akan muncul setiap 30 detik. Anda bisa menggantinya lebih lama misal `60000` untuk 1 menit).
+   - Di panel **Components**, klik **Rename** pada gambar tersebut, ubah menjadi: `Logo_Aplikasi`.
+   - Di panel **Properties**, scroll ke bawah, cari kotak centang **Clickable** dan **wajib Anda centang**.
+   - _(Opsional)_ Tarik **Label** letakkan di sebelah logo jika ingin memberi teks judul.
+2. **Info Karakter:** Tarik **Label** ke bawah kotak header.
+   - Di panel **Properties**, ubah **Text** menjadi: `Nama Peliharaan`. Centang **FontBold**.
+   - Di panel **Components**, Rename: `Teks_NamaPet`.
+3. **Gambar Karakter:** Tarik komponen **Image** ke layar. Di panel Properties, set _Picture_ dengan gambar karakter Anda. Rename menjadi: `Gambar_Pet`.
+4. **Menu Tombol:** Tarik 4 buah komponen **Button** ke layar secara berurutan dari atas ke bawah.
+   - Button 1 -> Di Properties ubah Text: `Catat Uang`. Di Components Rename: `Menu_CatatUang`.
+   - Button 2 -> Ubah Text: `Cek Saldo`. Rename: `Menu_Saldo`.
+   - Button 3 -> Ubah Text: `Toko Aksesoris`. Rename: `Menu_Toko`.
+   - Button 4 -> Ubah Text: `Mutual Friends`. Rename: `Menu_Teman`.
+5. **Alat Tambahan (Wajib):**
+   - Dari panel **Palette** > **Storage**, tarik **TinyDB** (Rename di Components: `DB_Kel3`).
+   - Dari panel **Palette** > **User Interface**, tarik **Notifier** (Rename di Components: `Notifikasi`).
+   - Dari panel **Palette** > klik kategori **Sensors**, tarik komponen **Clock** ke layar HP.
+   - Beralih ke panel **Properties**, pastikan **TimerEnabled** dicentang dan ubah **TimerInterval** menjadi `30000` (angka ini adalah milidetik, artinya pengingat akan muncul tiap 30 detik. Anda bisa menggantinya jadi `60000` untuk 1 menit).
 
 ### B. Kode (Blocks)
 
 Pindah ke tampilan **Blocks**.
 
-1. **Logika Logo (Refresh Halaman Utama):**
-   - Di panel kiri, temukan dan klik `Logo_Aplikasi`. Tarik blok kuning teratas: `when Logo_Aplikasi.Click do`.
-   - Klik kategori **Control**, tarik blok `open another screen screenName`.
-   - Klik kategori **Text**, tarik blok teks kosong `" "` paling atas. Pasangkan lalu ketik: `HalamanUtama`.
+1. **Logika Logo (Refresh):**
+   - Di panel kiri bawah, klik `Logo_Aplikasi`. Tarik blok kuning: `when Logo_Aplikasi.Click do`.
+   - Dari kategori **Control**, tarik `open another screen screenName`. Pasangkan teks pink `" "` dan ketik: `HalamanUtama`.
 2. **Tampilkan Nama Peliharaan:**
-   - Tarik blok kuning `when HalamanUtama.Initialize do`.
-   - Klik `Teks_NamaPet`, tarik `set Teks_NamaPet.Text to`. Pasangkan dengan blok ungu `call DB_Kel3.GetValue` (tag: `"NamaPet"`, default: `"Hewanku"`).
+   - Di panel kiri bawah, klik nama Screen `HalamanUtama`. Tarik blok kuning `when HalamanUtama.Initialize do`.
+   - Klik komponen `Teks_NamaPet`, tarik blok hijau muda `set Teks_NamaPet.Text to`. Masukkan ke dalam blok kuning.
+   - Klik `DB_Kel3`, tarik blok ungu `call DB_Kel3.GetValue`. Pasangkan ke blok set.
+   - Isi lubang `tag` dengan teks pink `" "` ketik `"NamaPet"`, dan isi `valueIfTagNotThere` dengan teks pink `"Hewanku"`.
 3. **Notifikasi Lupa Menabung (Timer):**
-   - Klik `Clock1` di panel kiri, tarik blok kuning `when Clock1.Timer do`.
-   - Tarik blok ungu `call Notifikasi.ShowAlert notice`. Isi dengan teks pink `"Ayo berikan makan peliharaanmu dengan cara menabung!"`.
-4. **Navigasi Tombol:**
-   - Buat blok kuning `when Click do` untuk keempat tombol menu (`Menu_CatatUang`, `Menu_Saldo`, `Menu_Toko`, `Menu_Teman`).
-   - Pasangkan `open another screen` untuk masing-masing tujuannya (Teks pink: `"CatatUang"`, `"Saldo"`, `"Toko"`, `"Teman"`).
+   - Di panel kiri bawah, klik komponen `Clock1`, tarik blok kuning `when Clock1.Timer do`.
+   - Klik `Notifikasi`, tarik blok ungu `call Notifikasi.ShowAlert notice`.
+   - Isi bagian notice dengan teks pink `" "` dan ketik: `"Ayo berikan makan peliharaanmu dengan cara menabung!"`.
+4. **Navigasi Tombol (Ulangi untuk ke-4 tombol):**
+   - Klik `Menu_CatatUang`, tarik blok kuning `when Menu_CatatUang.Click do`. Pasangkan blok `open another screen` dan isi teks pink `"CatatUang"`.
+   - Lakukan hal yang sama persis untuk `Menu_Saldo` (isi layar `"Saldo"`), `Menu_Toko` (isi layar `"Toko"`), dan `Menu_Teman` (isi layar `"Teman"`).
 
 ---
 
 ## TAHAP 4: Desain & Blocks - CatatUang
 
-Ganti screen ke **CatatUang**.
+Ganti screen aktif ke **CatatUang** via dropdown. Kembali ke mode **Designer**.
 
 ### A. Desain (Designer)
 
 1. **Paste Header Utama:**
-   - Ganti screen kembali ke `HalamanUtama` sebentar.
-   - Klik komponen `HorizontalArrangement` (Header) yang berisi Logo Anda.
-   - Tekan tombol **Ctrl + C** (Copy).
-   - Ganti screen kembali ke `CatatUang`. Tekan tombol **Ctrl + V** (Paste). Header dan Logo otomatis terpasang.
-2. Tarik **TextBox** (Hint: `Nominal Pemasukan`, Centang _NumbersOnly_, Rename: `Input_Masuk`).
-3. Tarik **Button** (Text: `Simpan Pemasukan`, Rename: `Tombol_Masuk`).
-4. Tarik **TextBox** (Hint: `Nominal Pengeluaran`, Centang _NumbersOnly_, Rename: `Input_Keluar`).
-5. Tarik **Button** (Text: `Simpan Pengeluaran`, Rename: `Tombol_Keluar`).
-6. Tarik **TinyDB** (`DB_Kel3`) dan **Notifier** (`Pesan`).
+   - Ganti screen kembali ke `HalamanUtama`. Di panel **Components**, klik komponen `HorizontalArrangement` (Header). Tekan **Ctrl + C** (Copy).
+   - Ganti screen kembali ke `CatatUang`. Tekan **Ctrl + V** (Paste).
+2. Dari panel **Palette** > **User Interface**, tarik **TextBox**. (Ubah Hint: `Nominal Pemasukan`, Centang kotak _NumbersOnly_, Rename menjadi: `Input_Masuk`).
+3. Tarik komponen **Button**. (Ubah Text: `Simpan Pemasukan`, Rename: `Tombol_Masuk`).
+4. Tarik komponen **TextBox** kedua. (Ubah Hint: `Nominal Pengeluaran`, Centang _NumbersOnly_, Rename: `Input_Keluar`).
+5. Tarik komponen **Button** kedua. (Ubah Text: `Simpan Pengeluaran`, Rename: `Tombol_Keluar`).
+6. Dari kategori **Storage**, tarik **TinyDB** (Rename: `DB_Kel3`). Dari kategori **User Interface**, tarik **Notifier** (Rename: `Pesan`).
 
 ### B. Kode (Blocks)
 
 Pindah ke **Blocks**.
 
 1. **Simpan Pemasukan:**
-   - Tarik blok kuning `when Tombol_Masuk.Click do`.
-   - Gunakan `StoreValue` tag `"TotalMasuk"`. Isinya blok Math `+` (`GetValue` tag `"TotalMasuk"`, default `0` ditambah `Input_Masuk.Text`).
-   - Tampilkan pesan Notifier `ShowAlert notice` isi teks pink `"Pemasukan berhasil dicatat!"`.
+   - Klik `Tombol_Masuk`, tarik blok kuning `when Tombol_Masuk.Click do`.
+   - Klik `DB_Kel3`, tarik `call DB_Kel3.StoreValue`. Isi tag dengan teks pink `"TotalMasuk"`.
+   - Pada `valueToStore`, tarik blok tambah `+` dari kategori **Math**.
+     - Sisi kiri `+`: Ambil `call DB_Kel3.GetValue` isi tag `"TotalMasuk"` dan default `0` (dari Math).
+     - Sisi kanan `+`: Klik `Input_Masuk` di panel kiri, tarik blok hijau tua `Input_Masuk.Text`.
+   - Klik `Pesan`, tarik `ShowAlert notice` isi teks pink `"Pemasukan berhasil dicatat!"`. Letakkan di bawah StoreValue.
 2. **Simpan Pengeluaran:**
-   - Tarik blok kuning `when Tombol_Keluar.Click do`.
-   - Gunakan `StoreValue` tag `"TotalKeluar"`. Isinya blok Math `+` (`GetValue` tag `"TotalKeluar"`, default `0` ditambah `Input_Keluar.Text`).
-   - Tampilkan pesan Notifier `ShowAlert notice` isi teks pink `"Pengeluaran berhasil dicatat!"`.
+   - Klik `Tombol_Keluar`, tarik blok kuning `when Tombol_Keluar.Click do`.
+   - Klik `DB_Kel3`, tarik `call DB_Kel3.StoreValue`. Isi tag dengan teks pink `"TotalKeluar"`.
+   - Pada `valueToStore`, tarik blok tambah `+` dari kategori **Math**.
+     - Sisi kiri `+`: Ambil `call DB_Kel3.GetValue` isi tag `"TotalKeluar"` dan default `0`.
+     - Sisi kanan `+`: Klik `Input_Keluar`, tarik blok hijau tua `Input_Keluar.Text`.
+   - Tampilkan Notifier `ShowAlert notice` isi teks pink `"Pengeluaran berhasil dicatat!"`.
 
 ---
 
 ## TAHAP 5: Desain & Blocks - Saldo (Evolusi Pet)
 
-Ganti screen ke **Saldo**. Di sini pet Anda akan bertumbuh!
+Ganti screen aktif ke **Saldo**. Di sini peliharaan Anda akan berevolusi!
 
 ### A. Desain (Designer)
 
-1. **Paste Header Utama:** Tekan tombol **Ctrl + V** (Paste) agar Header muncul di atas.
-2. Tarik **Label** ke bawah header. (Text: `Saldo Anda: Rp 0`, Centang FontBold, Rename: `Teks_Saldo`).
-3. Tarik **Image**. Upload ketiga gambar pet Anda (bayi, remaja, dewasa) di bagian Media, tapi biarkan _Picture_ awalnya kosong. Rename: `Gambar_Pertumbuhan`.
-4. Tarik **Button** (Text: `Bebaskan Peliharaanku!`, Rename: `Tombol_Bebaskan`).
-5. Tarik **TinyDB** (`DB_Kel3`) dan **Notifier** (`Pesan`).
+1. **Paste Header Utama:** Tekan **Ctrl + V** (Paste) agar Header muncul di atas.
+2. Tarik **Label** ke layar. (Di Properties ubah Text: `Saldo Anda: Rp 0`, Centang _FontBold_, Rename: `Teks_Saldo`).
+3. Tarik **Image**. Di panel **Media** (bawah), Upload ketiga gambar pet Anda (misal: bayi.png, remaja.png, dewasa.png). Tapi di panel Properties, biarkan menu _Picture_ kosong. Rename komponennya: `Gambar_Pertumbuhan`.
+4. Tarik **Button**. (Ubah Text: `Bebaskan Peliharaanku!`, Rename: `Tombol_Bebaskan`).
+5. Jangan lupa tarik **TinyDB** (`DB_Kel3`) dan **Notifier** (`Pesan`).
 
 ### B. Kode (Blocks)
 
 Pindah ke **Blocks**.
 
 1. **Menghitung Saldo & Evolusi:**
-   - Tarik blok kuning `when Saldo.Initialize do`.
-   - Buat 2 variabel lokal dari kategori **Variables** (`initialize local name to`). Namakan `UangSaldo` (isinya blok Math `-` dari `GetValue` "TotalMasuk" dikurangi `GetValue` "TotalKeluar") dan `TargetUang` (isinya `GetValue` tag `"Target"`).
-   - Set `Teks_Saldo.Text` dengan teks `"Saldo Anda: Rp "` digabung (`join`) dengan variabel `UangSaldo`.
-   - **Logika Evolusi:** Dari kategori **Control**, tarik blok `if then` dan tambahkan `else if` di bawahnya.
-   - **Kondisi 1 (Sudah Capai Target):** Jika variabel `UangSaldo` **>=** variabel `TargetUang`, maka `set Gambar_Pertumbuhan.Picture to` teks pink `"dewasa.png"` (Sesuaikan dengan nama file gambar Anda yang sebenarnya).
-   - **Kondisi 2 (Setengah Target):** Else if, gunakan blok Math bagi `/`. Jika variabel `UangSaldo` **>=** (`TargetUang` / `2`), maka `set Gambar_Pertumbuhan.Picture to` teks pink `"remaja.png"`.
-   - **Kondisi Else:** `set Gambar_Pertumbuhan.Picture to` teks pink `"bayi.png"`.
+   - Di panel kiri bawah, klik nama Screen `Saldo`. Tarik blok kuning `when Saldo.Initialize do`.
+   - Klik kategori **Variables** (oranye tua), tarik blok `initialize local name to in do` (blok panjang dengan celah _do_).
+   - Klik ikon **gir (gear) biru** pada blok variabel tersebut. Tarik blok `name` tambahan dari sisi kiri ke bawah blok `name` di sebelah kanan agar variabelnya jadi ada 2 baris.
+   - Ganti tulisan `name` pertama menjadi `UangSaldo`. Pasangkan dengan blok kurang `-` dari kategori **Math**. (Sisi kirinya `GetValue` tag `"TotalMasuk"`, Sisi kanannya `GetValue` tag `"TotalKeluar"`).
+   - Ganti tulisan `name` kedua menjadi `TargetUang`. Pasangkan dengan `GetValue` tag `"Target"` (default `0`).
+   - **Tampilkan Saldo:** Di dalam celah _do_, klik `Teks_Saldo`, tarik `set Teks_Saldo.Text to`. Gunakan blok `join` dari **Text**. (Atas: `"Saldo Anda: Rp "`. Bawah: arahkan kursor ke tulisan `UangSaldo` lalu tarik blok merah `get UangSaldo`).
+   - **Logika Evolusi:** Dari kategori **Control**, tarik blok `if then` ke bawah susunan teks saldo. Klik ikon **gir (gear) biru** pada blok `if`, tarik blok `else if` dan blok `else` secara berurutan ke dalam kerangka sebelah kanan.
+   - **Kondisi 1 (Capai Target):** Tarik blok lebih besar sama dengan `>=` dari **Math**. Sisi kiri isi dengan merah `get UangSaldo`, sisi kanan merah `get TargetUang`. Di celah _then_, tarik blok hijau muda `set Gambar_Pertumbuhan.Picture to`, isi dengan teks pink persis seperti nama file Anda, misal `"dewasa.png"`.
+   - **Kondisi 2 (Setengah Target):** Di bagian _else if_, tarik blok `>=` lagi. Sisi kirinya `get UangSaldo`. Sisi kanannya gunakan blok bagi `/` dari Math (`get TargetUang` dibagi `2`). Di celah _then_, set _Picture_ ke `"remaja.png"`.
+   - **Kondisi Else (Awal):** Di celah _else_, set _Picture_ ke `"bayi.png"`.
 2. **Tombol Bebaskan:**
-   - Tarik blok kuning `when Tombol_Bebaskan.Click do`.
-   - Gunakan blok `if then else`.
-   - Jika `UangSaldo` >= `TargetUang`, maka `open another screen` isi dengan `"BebasPet"`.
-   - Jika belum (else), tampilkan pesan Notifier `ShowAlert notice` isi teks `"Target belum tercapai! Terus menabung ya!"`.
+   - Klik `Tombol_Bebaskan`, tarik blok kuning `when Click do`.
+   - Tarik blok `if then else` dari **Control**.
+   - Jika `get UangSaldo` `>=` `get TargetUang`, maka `open another screen` ke `"BebasPet"`.
+   - Jika belum (else), tarik `ShowAlert notice` dari `Pesan` dan isi teks pink `"Target belum tercapai! Terus menabung ya!"`.
 
 ---
 
 ## TAHAP 6: Toko, Teman & BebasPet
 
-Ketiga screen ini adalah pelengkap ekosistem aplikasi Anda.
+Ketiga screen ini adalah pelengkap ekosistem aplikasi Anda. Ganti Screen melalui menu Dropdown atas.
 
 ### 1. Screen Toko
 
-Ganti screen aktif ke **Toko**.
-
-- **A. Desain:** - Paste Header (**Ctrl + V**).
-  - Tarik 2 **Button** berurutan. Rename menjadi `Beli_Makanan` (Text: `Beli Makanan - Rp 5000`) dan `Beli_Aksesoris` (Text: `Beli Topi - Rp 10000`).
-  - Tarik **TinyDB** (`DB_Kel3`) dan **Notifier** (`Pesan`).
+- **A. Desain:** Ganti screen ke **Toko**. Tekan **Ctrl + V** untuk Paste Header.
+  - Tarik 2 **Button**. Rename jadi `Beli_Makanan` (Text: `Beli Makanan - Rp 5000`) dan `Beli_Aksesoris` (Text: `Beli Topi - Rp 10000`). Tarik **TinyDB** (`DB_Kel3`) dan **Notifier** (`Pesan`).
 - **B. Blocks:** - Tarik blok kuning `when Beli_Makanan.Click do`.
-  - Tarik `StoreValue` tag `"TotalKeluar"`. Isinya blok Math `+` (`GetValue` "TotalKeluar" ditambah angka `5000`).
-  - Munculkan pesan Notifier `"Makanan berhasil dibeli! Peliharaanmu senang!"`.
-  - Lakukan hal yang sama untuk tombol aksesoris dengan angka `10000`.
+  - Klik `DB_Kel3`, tarik `StoreValue` tag `"TotalKeluar"`. Isinya blok Math `+` (`GetValue` tag `"TotalKeluar"` ditambah angka `5000` dari Math).
+  - Tampilkan `ShowAlert notice` isi `"Makanan berhasil dibeli! Peliharaanmu senang!"`. Lakukan logika yang sama untuk tombol aksesoris dengan angka `10000`.
 
 ### 2. Screen Teman (Mutual Friends)
 
-Ganti screen aktif ke **Teman**.
-
-- **A. Desain:** - Paste Header (**Ctrl + V**).
-  - Fitur ini hanya berupa purwarupa (prototype) tampilan statis. Tarik komponen **Label** (Text: `Daftar Teman Menabung`, FontBold).
-  - Tarik komponen **ListView**. Di panel Properties, cari kotak **ElementsFromString** lalu ketikkan nama teman bohongan beserta level mereka. Contoh ketik (tanpa spasi setelah koma): `Andi (Level 5),Budi (Level 3),Siska (Level 1)`.
+- **A. Desain:** Ganti screen ke **Teman**. Tekan **Ctrl + V** untuk Paste Header.
+  - Tarik komponen **Label** (Ubah Text: `Daftar Teman Menabung`, centang FontBold).
+  - Dari kategori **User Interface**, tarik **ListView**. Di panel **Properties**, cari menu **ElementsFromString**, klik dan ketikkan nama tanpa spasi setelah koma, contoh: `Andi(Level5),Budi(Level3),Siska(Level1)`. (Screen ini hanya prototype visual).
 
 ### 3. Screen BebasPet
 
-Ganti screen aktif ke **BebasPet**.
+- **A. Desain:** Ganti screen ke **BebasPet**. Tekan **Ctrl + V** untuk Paste Header.
+  - Tarik komponen **Image**, di Properties klik _Picture_ pilih gambar pet bebas/bahagia.
+  - Tarik **Label**. Di Properties, ubah Font Size menjadi `20`, centang FontBold, dan ubah Text: `Selamat! Target Tercapai dan Peliharaan Kamu Hidup Bebas & Bahagia!`.
+  - Tarik **Button**. Ubah Text menjadi: `Kembali ke Beranda`. Di mode **Blocks**, buat blok kuning `when Click do` untuk tombol ini lalu pasangkan `open another screen` `"HalamanUtama"`.
 
-- **A. Desain:** - Paste Header (**Ctrl + V**).
-  - Tarik **Image**, upload dan pilih gambar peliharaan Anda yang sedang bahagia/terbang/bebas.
-  - Tarik **Label** ke bawah gambar. Perbesar ukuran Font menjadi `20` dan centang FontBold. Ubah Text menjadi: `Selamat! Target Tercapai dan Peliharaan Kamu Hidup Bebas & Bahagia!`.
-  - Tarik **Button** di bawahnya. Ubah Text menjadi: `Kembali ke Beranda`, arahkan (dengan blocks `when Click do`) untuk `open another screen` ke `"HalamanUtama"`.
-
-> **PENTING:** Silakan coba jalankan aplikasi secara penuh di HP Anda. Mulai dari mengisi nama dan target, login, hingga simulasi mencatat uang masuk agar peliharaannya bisa berevolusi dari bayi menjadi dewasa. Jangan lupa klik **Projects > Save project**!
+> **PENTING:** Silakan coba Connect/Run aplikasi secara penuh di HP Anda. Mulai dari membuat karakter, login, hingga mencatat uang masuk agar peliharaannya berevolusi dari bayi menjadi dewasa. Jangan lupa klik **Projects > Save project**!
